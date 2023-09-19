@@ -1,11 +1,20 @@
 <script setup lang="ts">
 import SearchIcon from '@/assets/icons/SearchIcon.vue'
+
+const search = ref('')
 </script>
 
 <template>
   <section>
     <div class="searchbar-container">
-      <input type="search" name="search" id="search" autofocus placeholder="Поиск..." />
+      <input
+        type="search"
+        name="search"
+        id="search"
+        autofocus
+        placeholder="Поиск..."
+        v-model="search"
+      />
       <div class="icon-wrapper">
         <SearchIcon />
       </div>
@@ -39,6 +48,7 @@ input[type='search'] {
   width: 100%;
   border: 1px solid $black;
   padding: 12px 24px;
+  font-size: 18px;
 
   &:focus {
     outline: none;
@@ -57,8 +67,8 @@ input[type='search'] {
   right: 0;
   top: 0;
 
-  height: 43px;
-  min-width: 43px;
+  height: 100%;
+  min-width: 48px;
   padding-left: 24px;
   padding-right: 24px;
 }
