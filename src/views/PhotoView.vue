@@ -2,6 +2,7 @@
 import HeartIcon from '@/assets/icons/HeartIcon.vue'
 import DownloadIcon from '@/assets/icons/DownloadIcon.vue'
 import { useFetch } from '@/utils/useFetch'
+import { addFavorite } from '@/utils/useStorage'
 
 const url = window.location.href.split('/')
 const id = url[url.length - 1]
@@ -12,7 +13,7 @@ const { data, loading, error } = useFetch(
 </script>
 
 <template>
-  <main>
+  <section>
     <div class="loading" v-if="loading">
       <h2>Loading</h2>
     </div>
@@ -40,7 +41,7 @@ const { data, loading, error } = useFetch(
             </div>
           </a>
           <div class="row">
-            <Button class="white">
+            <Button class="white" @click="addFavorite(id, data.urls.regular)">
               <HeartIcon />
             </Button>
             <Button class="primary"><DownloadIcon /> Download</Button>
@@ -49,7 +50,7 @@ const { data, loading, error } = useFetch(
         <img class="main-image" :src="data.urls.regular" alt="" />
       </div>
     </div>
-  </main>
+  </section>
 </template>
 
 <style scoped lang="scss">

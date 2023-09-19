@@ -25,35 +25,8 @@ const { data, loading, error } = useFetch(import.meta.env.VITE_API_URL)
           <img :src="item.urls.regular" :alt="item.alt_description" width="300" height="300" />
         </RouterLink>
       </div>
-      <div v-else></div>
     </div>
   </main>
 </template>
 
-<style scoped lang="scss">
-main {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: 12px;
-}
-
-.grid {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  gap: 12px;
-}
-
-.photo-link {
-  flex: 0 0 300px;
-  height: 300px;
-}
-
-img {
-  border-radius: 12px;
-}
-</style>
+<style scoped lang="scss"></style>
