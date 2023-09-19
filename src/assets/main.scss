@@ -12,7 +12,6 @@ a {
 }
 
 main {
-  position: relative;
   margin-top: 40px;
   display: flex;
   flex-direction: column;
@@ -60,4 +59,19 @@ main {
   justify-content: center;
 
   color: #ae1515;
+}
+
+.no-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  & .icon-wrapper {
+    font-size: 42px;
+  }
+
+  & h3 {
+    font-size: 24px;
+  }
 }

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import ArrowUpIcon from '@/assets/icons/ArrowUpIcon.vue'
 import { useFetch } from '@/utils/useFetch'
-
 const { data, loading, error } = useFetch(import.meta.env.VITE_API_URL)
 </script>
 
