@@ -32,6 +32,7 @@ const { data, loading, error } = useFetch(import.meta.env.VITE_API_URL)
 
 <style scoped lang="scss">
 main {
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;

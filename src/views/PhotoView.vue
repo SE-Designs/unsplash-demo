@@ -102,7 +102,13 @@ img {
 }
 
 h3 {
+  color: $white;
   font-weight: 700;
+}
+
+h4 {
+  color: $white;
+  font-weight: 400;
 }
 
 a {
@@ -125,8 +131,8 @@ button {
   height: 40px;
   border-radius: 12px;
   gap: 8px;
-  border: 0;
   opacity: 1;
+  border: 1px solid;
 
   transition: opacity 0.2s;
 
@@ -136,16 +142,30 @@ button {
 
   &.white {
     color: $black;
+    border-color: $gray;
     background-color: $white;
   }
 
   &.primary {
     color: $black;
+    border-color: $primary;
     background-color: $primary;
   }
 }
 
 @media only screen and (max-width: 1280px) {
+  .main-image {
+    box-shadow: 0 0 0;
+  }
+
+  h3 {
+    color: $black;
+  }
+
+  h4 {
+    color: darken($gray, 60);
+  }
+
   .background-wrapper {
     display: none;
   }
