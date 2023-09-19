@@ -12,6 +12,7 @@ a {
 }
 
 main {
+  position: relative;
   margin-top: 40px;
   display: flex;
   flex-direction: column;
@@ -41,4 +42,22 @@ main {
   & img {
     border-radius: 12px;
   }
+}
+
+.loading {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.error {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: #ae1515;
 }
