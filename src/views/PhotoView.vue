@@ -6,7 +6,9 @@ import { useFetch } from '@/utils/useFetch'
 const url = window.location.href.split('/')
 const id = url[url.length - 1]
 
-const { data, loading, error } = useFetch(`${import.meta.env.VITE_API_PHOTO}&id=${id}`)
+const { data, loading, error } = useFetch(
+  `${import.meta.env.VITE_API_PHOTO}${id}?client_id=${import.meta.env.VITE_API_KEY}`
+)
 </script>
 
 <template>
@@ -19,21 +21,22 @@ const { data, loading, error } = useFetch(`${import.meta.env.VITE_API_PHOTO}&id=
       <p>{{ error }}</p>
     </div>
     <div class="photo-container" v-else-if="data">
+      <!-- {{ data }} -->
       <div class="background-wrapper">
-        <img :src="data[0].urls.full" alt="" loading="lazy" />
+        <img :src="data.urls.full" alt="" loading="lazy" />
       </div>
       <div class="main-wrapper container">
         <div class="details">
-          <a :href="data[0].user.links.html" class="row">
+          <a :href="data.user.links.html" class="row">
             <img
-              :src="data[0].user.profile_image.medium"
-              :alt="data[0].user.username"
+              :src="data.user.profile_image.medium"
+              :alt="data.user.username"
               width="60"
               height="60"
             />
             <div>
-              <h3>{{ data[0].user.name }}</h3>
-              <h4>@{{ data[0].user.username }}</h4>
+              <h3>{{ data.user.name }}</h3>
+              <h4>@{{ data.user.username }}</h4>
             </div>
           </a>
           <div class="row">
@@ -43,7 +46,7 @@ const { data, loading, error } = useFetch(`${import.meta.env.VITE_API_PHOTO}&id=
             <Button class="primary"><DownloadIcon /> Download</Button>
           </div>
         </div>
-        <img class="main-image" :src="data[0].urls.regular" alt="" />
+        <img class="main-image" :src="data.urls.regular" alt="" />
       </div>
     </div>
   </main>
@@ -84,6 +87,7 @@ img {
   width: 100%;
   max-width: 1200px;
   border-radius: 12px;
+  border: 1px solid transparentize($gray, 0.8);
   box-shadow: 0 24px 24px 12px rgba(0, 0, 0, 0.4);
 }
 
@@ -96,7 +100,7 @@ img {
   gap: 20px 40px;
 
   & img {
-    border: 1px solid $white;
+    border: 1px solid transparentize($gray, 0.4);
     border-radius: 4px;
   }
 }
