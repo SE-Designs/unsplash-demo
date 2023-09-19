@@ -33,7 +33,7 @@ section {
   align-items: center;
   justify-content: center;
 
-  // background: ;
+  background: center center / cover url('../assets/back.jpg') no-repeat;
 }
 
 .searchbar-container {
@@ -46,14 +46,14 @@ section {
 
 input[type='search'] {
   width: 100%;
-  border: 1px solid $black;
+  border: 1px solid $white;
   padding: 12px 24px;
   font-size: 18px;
 
   &:focus {
     outline: none;
     appearance: none;
-    border-color: $primary;
+    border-color: $gray;
   }
 }
 
