@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ArrowUpIcon from '@/assets/icons/ArrowUpIcon.vue'
 import { useFetch } from '@/utils/useFetch'
 
 const { data, loading, error } = useFetch(import.meta.env.VITE_API_URL)
@@ -26,7 +27,26 @@ const { data, loading, error } = useFetch(import.meta.env.VITE_API_URL)
         </RouterLink>
       </div>
     </div>
+    <a href="#" class="to-the-top">
+      <ArrowUpIcon />
+    </a>
   </main>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.to-the-top {
+  position: absolute;
+  right: 64px;
+  bottom: 64px;
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid $gray;
+  border-radius: 4px;
+}
+</style>
