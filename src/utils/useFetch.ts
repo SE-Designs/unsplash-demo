@@ -1,4 +1,4 @@
-import { ref, watchEffect, toValue } from 'vue'
+import { ref, watchEffect } from 'vue'
 
 export function useFetch(url: string) {
   const data = ref()

@@ -7,9 +7,9 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    NavHeader: typeof import('./components/NavHeader.vue')['default']
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
-    SearchbarSection: typeof import('./components/SearchbarSection.vue')['default']
+    NavHeader: (typeof import('./components/NavHeader.vue'))['default']
+    RouterLink: (typeof import('vue-router'))['RouterLink']
+    RouterView: (typeof import('vue-router'))['RouterView']
+    SearchbarSection: (typeof import('./components/SearchbarSection.vue'))['default']
   }
 }

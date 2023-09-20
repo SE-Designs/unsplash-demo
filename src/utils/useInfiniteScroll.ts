@@ -18,7 +18,9 @@ export function useInfiniteScroll(p: number = 1, s: string = '') {
     try {
       loading.value = true
       const response = await fetch(
-        `${API_URL}&page=${page.value}&per_page=${PAGE_SIZE}&count=${PAGE_SIZE}${QUERY}`
+        `${API_URL}&client_id=${import.meta.env.VITE_API_KEY}&page=${
+          page.value
+        }&per_page=${PAGE_SIZE}&count=${PAGE_SIZE}${QUERY}`
       )
       const json = await response.json()
 
