@@ -1,11 +1,26 @@
 <script setup lang="ts">
 import ArrowUpIcon from '@/assets/icons/ArrowUpIcon.vue'
-import { useFetch } from '@/utils/useFetch'
-const { data, loading, error } = useFetch(import.meta.env.VITE_API_URL)
+import EyeIcon from '@/assets/icons/EyeIcon.vue'
+import { useInfiniteScroll } from '@/utils/useInfiniteScroll'
+const currentPage = ref(1)
+
+const { data, loading, error, refetch } = useInfiniteScroll(currentPage.value)
+
+const showing = ref()
+
+function onSearchUpdated(query: string) {
+  currentPage.value = 1
+  console.log(query)
+  refetch(query)
+}
+
+watch(data, () => {
+  showing.value = data.value
+})
 </script>
 
 <template>
-  <SearchbarSection />
+  <SearchbarSection @search="onSearchUpdated" />
   <main>
     <div class="container">
       <div class="loading" v-if="loading">
@@ -15,15 +30,24 @@ const { data, loading, error } = useFetch(import.meta.env.VITE_API_URL)
         <h2>Something went wrong</h2>
         <p>{{ error }}</p>
       </div>
-      <div class="grid" v-else-if="data">
+      <div class="grid" v-else-if="showing.length > 0">
         <RouterLink
           class="photo-link"
-          v-for="item in data"
-          :key="item"
+          v-for="item in showing"
+          :key="item.id"
           :to="{ name: 'Photo', params: { id: item.id } }"
         >
           <img :src="item.urls.regular" :alt="item.alt_description" width="300" height="300" />
         </RouterLink>
+      </div>
+      <div class="no-data" v-else>
+        <div class="icon-wrapper">
+          <EyeIcon />
+        </div>
+        <h3>Здесь ничего нет</h3>
+      </div>
+      <div v-if="loading">
+        <h2>Загружаю еще...</h2>
       </div>
     </div>
     <a href="#" class="to-the-top">
@@ -34,9 +58,9 @@ const { data, loading, error } = useFetch(import.meta.env.VITE_API_URL)
 
 <style scoped lang="scss">
 .to-the-top {
-  position: absolute;
-  right: 64px;
-  bottom: 64px;
+  position: fixed;
+  right: 48px;
+  bottom: 48px;
 
   cursor: pointer;
   display: flex;
