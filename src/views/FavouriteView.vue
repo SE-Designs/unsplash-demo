@@ -29,7 +29,7 @@ function handleRemoveFavorite(id: string) {
           <img :src="item.photo" width="300" height="300" />
         </RouterLink>
       </div>
-      <div class="nothing-container">
+      <div class="no-data">
         <div class="icon-wrapper">
           <EyeIcon />
         </div>
@@ -58,20 +58,5 @@ function handleRemoveFavorite(id: string) {
   justify-content: center;
 
   z-index: 15;
-}
-
-.nothing-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  & .icon-wrapper {
-    font-size: 42px;
-  }
-
-  & h3 {
-    font-size: 24px;
-  }
 }
 </style>
