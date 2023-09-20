@@ -2,14 +2,12 @@
 import ArrowUpIcon from '@/assets/icons/ArrowUpIcon.vue'
 import EyeIcon from '@/assets/icons/EyeIcon.vue'
 import { useInfiniteScroll } from '@/utils/useInfiniteScroll'
-const currentPage = ref(1)
 
-const { data, loading, error, refetch } = useInfiniteScroll(currentPage.value)
+const { data, loading, error, refetch } = useInfiniteScroll()
 
 const showing = ref()
 
 function onSearchUpdated(query: string) {
-  currentPage.value = 1
   console.log(query)
   refetch(query)
 }
@@ -45,9 +43,6 @@ watch(data, () => {
           <EyeIcon />
         </div>
         <h3>Здесь ничего нет</h3>
-      </div>
-      <div v-if="loading">
-        <h2>Загружаю еще...</h2>
       </div>
     </div>
     <a href="#" class="to-the-top">
