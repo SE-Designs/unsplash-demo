@@ -1,46 +1,124 @@
-# unsplash-demo
+<a name="readme-top"></a>
 
-This template should help get you started developing with Vue 3 in Vite.
+# Unsplash Demo
 
-## Recommended IDE Setup
+## Description:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Unsplash demo application made overnight)
 
-## Type Support for `.vue` Imports in TS
+## Technologies:
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- 🚀 Frontend framework - `Vue 3`
+- 💪 Primary language - `Typescript`
+- 🗱 Build tool - `Vite`
+- 🚦 Routing - `Vue Router`
+- 💡 State management - `Pinia`
+- 🌠 Requests - `Fetch API`
+- 🩳 Styling - `SCSS`
+- 🌐 Cross-browser compatibility - `Autoprefixer`
+- 🌠 Icon solution - `Remix Icons`
+- 📰 Linting - `Eslint`
+- 🗳️ Formatting - `Prettier`
+- ⚙️ Images - `Unsplash API`
+- 📱 Storage - `Localstorage`
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+<p align="right">[<a href="#readme-top">Back to top</a>]</p>
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## Installation:
 
-## Customize configuration
+- `npm install` — установка пакетов;
+- `npm run dev` — компиляция проекта;
+- `npm run build` — сборка проекта;
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+<p align="right">[<a href="#readme-top">Back to top</a>]</p>
 
-## Project Setup
+## File structure:
 
-```sh
-npm install
+```
+unsplash-demo/
+├── public/
+│   ├── logo.ico
+│   └── ...
+├── src/
+│   ├── assets/
+│   │   ├── icons/
+│   │   └── ...
+│   ├── components/
+│   │   └── ...
+│   ├── router/
+│   │   ├── index.ts
+│   │   └── ...
+│   ├── stores/
+│   │   └── ...
+│   ├── utils/
+│   │   └── ...
+│   ├── views/
+│   │   └── ...
+│   ├── App.vue
+│   └── main.ts
+├── .eslintrc.cjs
+├── .gitignore
+├── .postcssrc.json
+├── .prettierrc.json
+├── env.d.ts
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── tsconfig.vitest.json
+├── vite.config.ts
+└── vitest.config.ts
 ```
 
-### Compile and Hot-Reload for Development
+<p align="right">[<a href="#readme-top">Back to top</a>]</p>
+
+## Website deployment:
+
+TBU
+
+<p align="right">[<a href="#readme-top">Back to top</a>]</p>
+
+## Available Scripts:
+
+### Development mode:
+
+To start the development server:
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+_The development server will run on port 3000 by default._
+
+### Build mode:
+
+To build the project:
 
 ```sh
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Preview mode:
+
+To preview the production build:
+
+```sh
+npm run preview
+```
+
+### Lint and format:
+
+To run ESLint for linting:
 
 ```sh
 npm run lint
+```
+
+To format the source code with Prettier:
+
+```sh
+npm run format
 ```
