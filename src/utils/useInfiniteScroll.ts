@@ -7,6 +7,7 @@ export function useInfiniteScroll(p: number = 1, s: string = '') {
   const data = ref()
   const totalPages = ref(1)
   const scroll = ref(0)
+  const search = ref(s)
 
   const PAGE_SIZE = import.meta.env.VITE_SHOW
   const API_URL = import.meta.env.VITE_API_URL
@@ -66,6 +67,10 @@ export function useInfiniteScroll(p: number = 1, s: string = '') {
       }
     }, 200)
   }
+
+  watch(search, () => {
+    page.value = 1
+  })
 
   watchEffect(() => {
     fetchData()
