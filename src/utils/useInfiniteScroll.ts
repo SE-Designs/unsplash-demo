@@ -1,10 +1,12 @@
 import { ref, watchEffect, onMounted } from 'vue'
 
-export function useInfiniteScroll(page: number, search: string = '') {
+export function useInfiniteScroll(p: number = 1, s: string = '') {
+  const page = ref(p)
   const loading = ref(false)
   const error = ref()
   const data = ref()
   const totalPages = ref(1)
+  const scroll = ref(0)
 
   const PAGE_SIZE = import.meta.env.VITE_SHOW
   const API_URL = import.meta.env.VITE_API_URL
@@ -15,11 +17,11 @@ export function useInfiniteScroll(page: number, search: string = '') {
     try {
       loading.value = true
       const response = await fetch(
-        `${API_URL}&page=${page}&per_page=${PAGE_SIZE}&count=${PAGE_SIZE}${QUERY}`
+        `${API_URL}&page=${page.value}&per_page=${PAGE_SIZE}&count=${PAGE_SIZE}${QUERY}`
       )
       const json = await response.json()
 
-      if (page === 1) {
+      if (page.value === 1) {
         data.value = json
       } else {
         data.value = data.value.concat(json)
@@ -36,23 +38,33 @@ export function useInfiniteScroll(page: number, search: string = '') {
     } catch (err) {
       error.value = err
     } finally {
+      window.scrollTo(0, scroll.value)
       loading.value = false
     }
   }
 
-  function handleScroll() {
-    const scrollY = window.scrollY
-    const windowHeight = window.innerHeight
-    const documentHeight = document.documentElement.scrollHeight
+  let scrollTimeout: number
 
-    if (
-      scrollY + windowHeight >= documentHeight - 300 &&
-      !loading.value &&
-      page < totalPages.value
-    ) {
-      page++
-      fetchData()
+  const handleScroll = () => {
+    if (scrollTimeout) {
+      clearTimeout(scrollTimeout)
     }
+
+    scrollTimeout = setTimeout(() => {
+      const scrollY = window.scrollY
+      const windowHeight = window.innerHeight
+      const documentHeight = document.documentElement.scrollHeight
+
+      console.log(scrollY)
+      console.log(windowHeight)
+      console.log(documentHeight)
+
+      if (scrollY + windowHeight >= documentHeight - 100 && !loading.value) {
+        page.value++
+        scroll.value = scrollY
+        fetchData(s)
+      }
+    }, 200)
   }
 
   watchEffect(() => {
@@ -61,6 +73,10 @@ export function useInfiniteScroll(page: number, search: string = '') {
 
   onMounted(() => {
     window.addEventListener('scroll', handleScroll)
+  })
+
+  onBeforeUnmount(() => {
+    window.removeEventListener('scroll', handleScroll)
   })
 
   return {
