@@ -2,6 +2,11 @@
 import SearchIcon from '@/assets/icons/SearchIcon.vue'
 
 const search = ref('')
+const emit = defineEmits(['search'])
+
+function updateSearch() {
+  emit('search', search.value)
+}
 </script>
 
 <template>
@@ -14,8 +19,9 @@ const search = ref('')
         autofocus
         placeholder="Поиск..."
         v-model="search"
+        @keydown.enter="updateSearch"
       />
-      <div class="icon-wrapper">
+      <div class="icon-wrapper" @click="updateSearch">
         <SearchIcon />
       </div>
     </div>
